@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.teproject.myattendance.StudentsMainActivity"
+    tools:showIn="@layout/app_bar_teachers_main">
+
+    <!--<RelativeLayout
+        android:id="@+id/LoadStudentsLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Select Department"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView21"
+            android:layout_marginTop="48dp"
+            android:text="Select Semester"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <Spinner
+            android:id="@+id/semspinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:entries="@array/sem_array"
+            android:gravity="center_horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Spinner
+            android:id="@+id/deptspinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView21"
+            android:entries="@array/demo_array"
+            android:gravity="center_horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Spinner
+            android:id="@+id/divisionspinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView20"
+            android:entries="@array/div_array"
+            android:gravity="center_horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Spinner
+            android:id="@+id/subjectspinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView22"
+            android:gravity="center_horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/semspinner"
+            android:layout_marginTop="33dp"
+            android:text="Select Division"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divisionspinner"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="33dp"
+            android:text="Select Subject"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/loadSubjButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/subjectspinner"
+            android:layout_marginStart="57dp"
+            android:layout_marginTop="61dp"
+            android:onClick="onLoadSubjectsClicked"
+            android:text="Load Subjects" />
+
+        <Button
+            android:id="@+id/nextMarkAttButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/loadSubjButton"
+            android:layout_marginEnd="56dp"
+            android:onClick="onNextClicked"
+            android:text="NEXT" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/markAttendanceLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TableRow
+                    android:id="@+id/attrow1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow1">
+
+                    <CheckBox
+                        android:id="@+id/attcb1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow2">
+
+                    <CheckBox
+                        android:id="@+id/attcb2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow3">
+
+                    <CheckBox
+                        android:id="@+id/attcb3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow4"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow4">
+
+                    <CheckBox
+                        android:id="@+id/attcb4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow5"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow5">
+
+                    <CheckBox
+                        android:id="@+id/attcb5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow6"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow6">
+
+                    <CheckBox
+                        android:id="@+id/attcb6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow7"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow7">
+
+                    <CheckBox
+                        android:id="@+id/attcb7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow8"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow8">
+
+                    <CheckBox
+                        android:id="@+id/attcb8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow9"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow9">
+
+                    <CheckBox
+                        android:id="@+id/attcb9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow10"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow10">
+
+                    <CheckBox
+                        android:id="@+id/attcb10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow11"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow11">
+
+                    <CheckBox
+                        android:id="@+id/attcb11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow12"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow12">
+
+                    <CheckBox
+                        android:id="@+id/attcb12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow13"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow13">
+
+                    <CheckBox
+                        android:id="@+id/attcb13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow14"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow14">
+
+                    <CheckBox
+                        android:id="@+id/attcb14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow15"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow15">
+
+                    <CheckBox
+                        android:id="@+id/attcb15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow16"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow16">
+
+                    <CheckBox
+                        android:id="@+id/attcb16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow17"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow17">
+
+                    <CheckBox
+                        android:id="@+id/attcb17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow18"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow18">
+
+                    <CheckBox
+                        android:id="@+id/attcb18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow19"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow19">
+
+                    <CheckBox
+                        android:id="@+id/attcb19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/attrow20"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/border_for_tv"
+                    android:onClick="markrow20">
+
+                    <CheckBox
+                        android:id="@+id/attcb20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/atttv20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="TextView"
+                        android:textSize="24sp" />
+                </TableRow>
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    -->
+
+    <RelativeLayout
+        android:id="@+id/markattFragLayout"
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <fragment
+            android:id="@+id/markAttfrag"
+            android:name="com.example.teproject.myattendance.markAttFragment"
+            android:layout_width="368dp"
+            android:layout_height="495dp"
+            tools:layout="@layout/mark_att_frag"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/teachNoticesLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <fragment
+            android:id="@+id/teachNoticesfragment"
+            android:name="com.example.teproject.myattendance.viewTeachNoticesFrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/view_notices_frag"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/TeachersTimeTableLayout"
+        android:layout_width="368dp"
+        android:layout_height="550dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/TeachersProfileLayout"
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <fragment
+            android:id="@+id/teachProfFrag"
+            android:name="com.example.teproject.myattendance.viewTeachProfileFrag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/teach_profile_frag" />
+    </RelativeLayout>
+
+    <!-- <ProgressBar
+         android:id="@+id/teachersprogressBar"
+         style="?android:attr/progressBarStyle"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="182dp"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         tools:layout_constraintLeft_creator="1"
+         tools:layout_constraintRight_creator="1"
+         tools:layout_constraintTop_creator="1"
+         tools:visibility="invisible" />
+
+     <TextView
+         android:id="@+id/welcometv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="WELCOME"
+         android:textSize="24sp"
+         app:layout_constraintLeft_toLeftOf="parent"
+         app:layout_constraintRight_toRightOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/teachersprogressBar"
+         tools:layout_constraintLeft_creator="1"
+         tools:layout_constraintRight_creator="1"
+         tools:layout_constraintTop_creator="1" />
+
+       <RelativeLayout
+           android:id="@+id/markAttendanceLayout"
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           android:layout_marginBottom="8dp"
+           android:layout_marginEnd="8dp"
+           android:layout_marginStart="8dp"
+           android:layout_marginTop="8dp"
+           android:visibility="invisible"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           tools:layout_constraintBottom_creator="1"
+           tools:layout_constraintLeft_creator="1"
+           tools:layout_constraintRight_creator="1"
+           tools:layout_constraintTop_creator="1">
+
+           <ScrollView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:orientation="vertical">
+
+                   <TableRow
+                       android:id="@+id/attrow1"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow1">
+
+                       <CheckBox
+                           android:id="@+id/attcb1"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv1"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow2"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow2">
+
+                       <CheckBox
+                           android:id="@+id/attcb2"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv2"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow3"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow3">
+
+                       <CheckBox
+                           android:id="@+id/attcb3"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv3"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow4"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow4">
+
+                       <CheckBox
+                           android:id="@+id/attcb4"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv4"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow5"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow5">
+
+                       <CheckBox
+                           android:id="@+id/attcb5"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv5"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow6"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow6">
+
+                       <CheckBox
+                           android:id="@+id/attcb6"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv6"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow7"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow7">
+
+                       <CheckBox
+                           android:id="@+id/attcb7"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv7"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow8"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow8">
+
+                       <CheckBox
+                           android:id="@+id/attcb8"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv8"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow9"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow9">
+
+                       <CheckBox
+                           android:id="@+id/attcb9"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv9"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow10"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow10">
+
+                       <CheckBox
+                           android:id="@+id/attcb10"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv10"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow11"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow11">
+
+                       <CheckBox
+                           android:id="@+id/attcb11"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv11"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow12"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow12">
+
+                       <CheckBox
+                           android:id="@+id/attcb12"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv12"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow13"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow13">
+
+                       <CheckBox
+                           android:id="@+id/attcb13"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv13"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow14"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow14">
+
+                       <CheckBox
+                           android:id="@+id/attcb14"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv14"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow15"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow15">
+
+                       <CheckBox
+                           android:id="@+id/attcb15"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv15"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow16"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow16">
+
+                       <CheckBox
+                           android:id="@+id/attcb16"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv16"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow17"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow17">
+
+                       <CheckBox
+                           android:id="@+id/attcb17"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv17"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow18"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow18">
+
+                       <CheckBox
+                           android:id="@+id/attcb18"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv18"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow19"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow19">
+
+                       <CheckBox
+                           android:id="@+id/attcb19"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv19"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+                   <TableRow
+                       android:id="@+id/attrow20"
+                       android:layout_width="match_parent"
+                       android:layout_height="50dp"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginTop="5dp"
+                       android:background="@drawable/border_for_tv"
+                       android:onClick="markrow20">
+
+                       <CheckBox
+                           android:id="@+id/attcb20"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content" />
+
+                       <TextView
+                           android:id="@+id/atttv20"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="5dp"
+                           android:layout_marginLeft="5dp"
+                           android:text="TextView"
+                           android:textSize="24sp" />
+                   </TableRow>
+
+               </LinearLayout>
+           </ScrollView>
+       </RelativeLayout>
+
+       <RelativeLayout
+           android:id="@+id/LoadStudentsLayout"
+           android:layout_width="0dp"
+           android:layout_height="0dp"
+           android:layout_marginBottom="8dp"
+           android:layout_marginEnd="8dp"
+           android:layout_marginStart="8dp"
+           android:layout_marginTop="8dp"
+           android:visibility="invisible"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           tools:layout_constraintBottom_creator="1"
+           tools:layout_constraintLeft_creator="1"
+           tools:layout_constraintRight_creator="1"
+           tools:layout_constraintTop_creator="1">
+
+           <TextView
+               android:id="@+id/textView21"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentTop="true"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="20dp"
+               android:text="Select Department"
+               android:textSize="24sp" />
+
+           <TextView
+               android:id="@+id/textView"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentStart="true"
+               android:layout_below="@+id/textView21"
+               android:layout_marginTop="48dp"
+               android:text="Select Semester"
+               android:textAlignment="center"
+               android:textSize="24sp" />
+
+           <Spinner
+               android:id="@+id/semspinner"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentStart="true"
+               android:layout_below="@+id/textView"
+               android:entries="@array/sem_array"
+               android:gravity="center_horizontal"
+               tools:layout_editor_absoluteX="8dp"
+               tools:layout_editor_absoluteY="0dp" />
+
+           <Spinner
+               android:id="@+id/deptspinner"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentStart="true"
+               android:layout_below="@+id/textView21"
+               android:entries="@array/demo_array"
+               android:gravity="center_horizontal"
+               tools:layout_editor_absoluteX="8dp"
+               tools:layout_editor_absoluteY="0dp" />
+
+           <Spinner
+               android:id="@+id/divisionspinner"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentStart="true"
+               android:layout_below="@+id/textView20"
+               android:entries="@array/div_array"
+               android:gravity="center_horizontal"
+               tools:layout_editor_absoluteX="8dp"
+               tools:layout_editor_absoluteY="0dp" />
+
+           <Spinner
+               android:id="@+id/subjectspinner"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentStart="true"
+               android:layout_below="@+id/textView22"
+               android:gravity="center_horizontal"
+               tools:layout_editor_absoluteX="8dp"
+               tools:layout_editor_absoluteY="0dp" />
+
+           <TextView
+               android:id="@+id/textView20"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_alignParentStart="true"
+               android:layout_below="@+id/semspinner"
+               android:layout_marginTop="33dp"
+               android:text="Select Division"
+               android:textAlignment="center"
+               android:textSize="24sp" />
+
+           <TextView
+               android:id="@+id/textView22"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/divisionspinner"
+               android:layout_centerHorizontal="true"
+               android:layout_marginTop="33dp"
+               android:text="Select Subject"
+               android:textSize="24sp" />
+
+           <Button
+               android:id="@+id/button"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentStart="true"
+               android:layout_below="@+id/subjectspinner"
+               android:layout_marginStart="57dp"
+               android:layout_marginTop="61dp"
+               android:onClick="onLoadSubjectsClicked"
+               android:text="Load Subjects" />
+
+           <Button
+               android:id="@+id/nextButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_alignParentEnd="true"
+               android:layout_alignTop="@+id/button"
+               android:layout_marginEnd="56dp"
+               android:onClick="onNextClicked"
+               android:text="NEXT" />
+
+       </RelativeLayout>
+       -->
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,1813 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.teproject.myattendance.StudentsMainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/app_bar_students_main">
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:layout_marginStart="26dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/welcometv"
+        app:layout_constraintLeft_toLeftOf="@+id/welcometv"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/welcometv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/AttendanceLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+        <!--
+                <LinearLayout
+                    android:id="@+id/AttendanceCol1"
+                    android:layout_width="175dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_constraintBottom_creator="1"
+                    tools:layout_constraintTop_creator="1">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp"
+                        tools:layout_editor_absoluteX="-174dp"
+                        tools:layout_editor_absoluteY="417dp" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/AttendanceCol2"
+                    android:layout_width="175dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_constraintBottom_creator="1"
+                    tools:layout_constraintTop_creator="1">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/textView19"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="18sp" />
+                </LinearLayout>
+        -->
+        <fragment
+            android:id="@+id/viewAttfragment"
+            android:name="com.example.teproject.myattendance.viewAttFragment"
+            android:layout_width="352dp"
+            android:layout_height="492dp"
+            tools:layout="@layout/view_att_frag"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="89dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/NoticesLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <!--    <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="487dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_constraintLeft_creator="1"
+                    tools:layout_constraintRight_creator="1"
+                    tools:layout_constraintTop_creator="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/noticestv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/noticestv3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv10"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv11"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/noticestv15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv17"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv19"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                        <TextView
+                            android:id="@+id/noticestv20"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/border_for_tv"
+                            android:padding="5dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textSize="30sp"
+                            tools:backgroundTint="@android:color/holo_blue_bright" />
+
+                    </LinearLayout>
+                </ScrollView>
+
+                -->
+        <fragment
+            android:id="@+id/viewNoticesFragment"
+            android:name="com.example.teproject.myattendance.viewNoticesFragment"
+            android:layout_width="352dp"
+            android:layout_height="487dp"
+            tools:layout="@layout/view_notices_frag"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="89dp" />
+    </android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/TimeTableLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+        <!--   <HorizontalScrollView
+                     android:layout_width="wrap_content"
+                     android:layout_height="match_parent">
+
+                     <TableLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="20dp"
+                         android:background="@drawable/border_for_tv"
+                         android:gravity="center_vertical"
+                         android:padding="2dp">
+
+                         <TableRow
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:padding="5dp">
+
+                             <TextView
+                                 android:id="@+id/timetabletv00"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv01"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="08:00 - 09:00"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv02"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="09:00 - 10:00"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv03"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="10:00 - 10:15 "
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv04"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="10:15 - 11:15"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv05"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="11:15 - 12:15"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv06"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="12:15 - 01:00"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv07"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="01:00 - 02:00"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv08"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="02:00 - 03:00"
+                                 android:textSize="24sp" />
+
+                         </TableRow>
+
+                         <TableRow
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:padding="5dp">
+
+                             <TextView
+                                 android:id="@+id/timetabletv10"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="MON"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv11"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv12"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv13"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv14"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv15"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv16"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv17"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv18"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                         </TableRow>
+
+                         <TableRow
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:padding="5dp">
+
+                             <TextView
+                                 android:id="@+id/timetabletv20"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TUE"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv21"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv22"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv23"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv24"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv25"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv26"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv27"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv28"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                         </TableRow>
+
+                         <TableRow
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:padding="5dp">
+
+                             <TextView
+                                 android:id="@+id/timetabletv30"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="WED"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv31"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv32"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv33"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv34"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv35"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv36"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv37"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv38"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                         </TableRow>
+
+                         <TableRow
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:padding="5dp">
+
+                             <TextView
+                                 android:id="@+id/timetabletv40"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="THU"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv41"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv42"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv43"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv44"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv45"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv46"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv47"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv48"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                         </TableRow>
+
+                         <TableRow
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:padding="5dp">
+
+                             <TextView
+                                 android:id="@+id/timetabletv50"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="FRI"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv51"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv52"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv53"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv54"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv55"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv56"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv57"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv58"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                         </TableRow>
+
+                         <TableRow
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:padding="5dp">
+
+                             <TextView
+                                 android:id="@+id/timetabletv60"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="SAT"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv61"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv62"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv63"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv64"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv65"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv66"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="Break"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv67"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                             <TextView
+                                 android:id="@+id/timetabletv68"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:background="@drawable/border_for_tv"
+                                 android:lineSpacingExtra="8sp"
+                                 android:padding="4dp"
+                                 android:paddingBottom="4dp"
+                                 android:paddingEnd="4dp"
+                                 android:paddingLeft="4dp"
+                                 android:paddingRight="4dp"
+                                 android:paddingStart="4dp"
+                                 android:paddingTop="4dp"
+                                 android:text="TextView"
+                                 android:textSize="24sp" />
+
+                         </TableRow>
+
+                     </TableLayout>
+                 </HorizontalScrollView>
+                 -->
+
+        <fragment
+            android:id="@+id/viewTTfragment"
+            android:name="com.example.teproject.myattendance.viewTTFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/view_tt_frag" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ProfileLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">>
+
+        <fragment
+            android:id="@+id/viewprofileFragment"
+            android:name="com.example.teproject.myattendance.viewProfileFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout="@layout/view_profile_fragment" />
+    </RelativeLayout>
+
+    <!--    <TextView
+                    android:id="@+id/nametv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="23dp"
+                    android:text="TextView"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/rollnotv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nametv"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="TextView"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/depttv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/editProfileButton"
+                    android:layout_below="@+id/rollnotv"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="28dp"
+                    android:text="TextView"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/yeartv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/depttv"
+                    android:layout_alignBottom="@+id/depttv"
+                    android:layout_marginStart="23dp"
+                    android:layout_toEndOf="@+id/depttv"
+                    android:text="TextView"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/semtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/depttv"
+                    android:layout_below="@+id/depttv"
+                    android:layout_marginTop="29dp"
+                    android:text="TextView"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/divtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/semtv"
+                    android:layout_alignBottom="@+id/semtv"
+                    android:layout_alignStart="@+id/yeartv"
+                    android:text="TextView"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/profileEmailtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/profileEmailet"
+                    android:layout_alignBottom="@+id/profileEmailet"
+                    android:layout_alignStart="@+id/semtv"
+                    android:text="Email:"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/profileAddresstv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/profileAddet"
+                    android:layout_alignBottom="@+id/profileAddet"
+                    android:layout_alignEnd="@+id/profileEmailtv"
+                    android:text="Address:"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/profileMobiletv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/profileMobet"
+                    android:layout_alignBottom="@+id/profileMobet"
+                    android:layout_alignEnd="@+id/profileAddresstv"
+                    android:text="Mobile:"
+                    android:textSize="24sp" />
+
+                <EditText
+                    android:id="@+id/profileEmailet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/profileAddet"
+                    android:layout_below="@+id/divtv"
+                    android:layout_marginTop="28dp"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+
+                <EditText
+                    android:id="@+id/profileAddet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profileEmailet"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/editProfileButton"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/black" />
+
+                <EditText
+                    android:id="@+id/profileMobet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignStart="@+id/profileAddet"
+                    android:layout_below="@+id/profileAddet"
+                    android:layout_marginTop="14dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/black" />
+
+                <Button
+                    android:id="@+id/editProfileButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="13dp"
+                    android:layout_toStartOf="@+id/rollnotv"
+                    android:onClick="onEditProfileClicked"
+                    android:text="Edit" />
+
+                <Button
+                    android:id="@+id/saveProfileButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/editProfileButton"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/rollnotv"
+                    android:onClick="onSaveProfileClicked"
+                    android:text="Save" />
+
+            </RelativeLayout>
+        -->
+
+</android.support.constraint.ConstraintLayout>

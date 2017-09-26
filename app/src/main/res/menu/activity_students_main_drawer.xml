@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <group android:checkableBehavior="single">
+
+        <item
+
+            android:id="@+id/nav_view_attendance"
+            android:icon="@android:drawable/ic_menu_day"
+            android:title="View Attendance" />
+        <item
+            android:id="@+id/nav_notices"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Notices" />
+        <item
+            android:id="@+id/nav_timetable"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Timetable" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Proile" />
+    </group>
+    <item
+        android:id="@+id/nav_logout"
+
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:title="Logout" />
+
+
+</menu>
