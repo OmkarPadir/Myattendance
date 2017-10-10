@@ -20,9 +20,9 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Timetable" />
         <item
-            android:id="@+id/nav_teachers_schedule"
+            android:id="@+id/nav_teachers_send_notices"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Schedule" />
+            android:title="Send Notices" />
     </group>
 
     <item

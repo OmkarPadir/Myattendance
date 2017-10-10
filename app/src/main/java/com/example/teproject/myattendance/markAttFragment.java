@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +40,9 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
     @Nullable
     View view;
     String uid;
+
+    String division;
+    String batch;
 
     int Count;
 
@@ -316,9 +320,9 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void markAttendance() {
+    public void markAttendance(String rollno) {
 
-
+        uid=rollno;
         makeLoadStudentsLayoutVisible();
 
         Button nextButton =(Button)view.findViewById(R.id.nextMarkAttButton);
@@ -344,8 +348,8 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
         final String div=divspinner.getSelectedItem().toString();
         final String subject=subjectspinner.getSelectedItem().toString();
 
-        final String division;
-        final String batch;
+        //final String division;
+        //final String batch;
 
         Log.i("temp",Integer.toString(div.length()));
         if(div.length()==2)
@@ -697,6 +701,30 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
     private void uploadAttendance() {
         Log.i("temp","hello " + Integer.toString(Count));
 
+        Spinner deptspinner =(Spinner) view.findViewById(R.id.deptspinner);
+        Spinner semspinner =(Spinner) view.findViewById(R.id.semspinner);
+        Spinner divspinner =(Spinner) view.findViewById(R.id.divisionspinner);
+        final Spinner subjectspinner =(Spinner) view.findViewById(R.id.subjectspinner);
+
+        final String dept=deptspinner.getSelectedItem().toString();
+        final String sem=semspinner.getSelectedItem().toString();
+        final String div=divspinner.getSelectedItem().toString();
+        final String subject=subjectspinner.getSelectedItem().toString();
+
+
+/*
+        Log.i("temp",Integer.toString(div.length()));
+        if(div.length()==2)
+        {
+            division=div.substring(0,1);
+            batch=div.substring(1,2);
+        }
+        else
+        {
+            division=div;
+            batch="0";
+        }
+*/
         final CheckBox[] cbs = new CheckBox[20];
         final TableRow[] trs = new TableRow[20];
         final TextView[] atttv = new TextView[20];
@@ -744,7 +772,7 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
         CheckBox attcb19=(CheckBox)view.findViewById(R.id.attcb19);cbs[18]=attcb19;
         CheckBox attcb20=(CheckBox)view.findViewById(R.id.attcb20);cbs[19]=attcb20;
 
-        JSONArray mainJsonArray= new JSONArray();
+        final JSONArray mainJsonArray= new JSONArray();
 
 
         for(int i=0;i<Count-1;i++)
@@ -762,9 +790,127 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
                 e.printStackTrace();
             }
 
-            Log.i("temp","hello " + mainJsonArray.toString());
+
 
         }
+
+
+        String link="http://000attendance-system.000webhostapp.com/AdministratorApp/MarkAttendance/markattendance.php";
+        class phpClass extends AsyncTask<String, String, String> {
+            private final String link;
+           // JSONObject subjlist;
+
+            phpClass(String url) {
+                link = url;
+            }
+
+            protected void onPostExecute(String res) {
+
+                Toast.makeText(view.getContext(),res,Toast.LENGTH_LONG).show();
+
+            }
+
+            protected String doInBackground(String[] params) {
+               try {
+
+                /*    HttpClient client = new DefaultHttpClient();
+                    HttpResponse response;
+                    try{
+                        HttpPost post = new HttpPost(link);
+                        List<NameValuePair> nVP = new ArrayList<NameValuePair>(2);
+                        nVP.add(new BasicNameValuePair("json", mainJsonArray.toString()));  //studentJson is the JSON input
+
+//student.Json.toString() produces the correct JSON [{"studentId":"2","class":"2a","dbname":"testDb"}]
+
+                        post.setEntity(new UrlEncodedFormEntity(nVP));
+                        response = client.execute(post);
+                        if(response!=null){
+//process data send from php
+                        }
+                    */
+                    String data = URLEncoder.encode("dept", "UTF-8") + "=" +
+                            URLEncoder.encode(dept, "UTF-8");
+
+                    data += "&" + URLEncoder.encode("sem", "UTF-8") + "=" +
+                            URLEncoder.encode(sem, "UTF-8");
+                    Log.i("temp","before div");
+                    data += "&" + URLEncoder.encode("class", "UTF-8") + "=" +
+                            URLEncoder.encode(division, "UTF-8");
+                    Log.i("temp","before batch");
+                    data += "&" + URLEncoder.encode("batch", "UTF-8") + "=" +
+                            URLEncoder.encode(batch, "UTF-8");
+                    Log.i("temp","before uid"+uid);
+                    data += "&" + URLEncoder.encode("uid", "UTF-8") + "=" +
+                            URLEncoder.encode(uid, "UTF-8");
+                    Log.i("temp","after uid "+uid);
+                    data += "&" + URLEncoder.encode("subject", "UTF-8") + "=" +
+                            URLEncoder.encode(subject, "UTF-8");
+
+
+
+                    data += "&" + URLEncoder.encode("jsonarray", "UTF-8") + "=" +
+                            URLEncoder.encode(mainJsonArray.toString(), "UTF-8");
+                   Log.i("temp","hello " + mainJsonArray.toString());
+
+
+                    URL url = new URL(link);
+                    URLConnection conn = url.openConnection();
+
+                    conn.setDoOutput(true);
+                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                    wr.write(data);
+                    wr.flush();
+
+                    BufferedReader reader = new BufferedReader(new
+                            InputStreamReader(conn.getInputStream()));
+
+                    StringBuilder sb = new StringBuilder();
+
+
+                    String line = null;
+
+                    // Read Server Response
+                    while ((line = reader.readLine()) != null) {
+                        sb.append(line);
+                        break;
+                    }
+                    Log.i("phpTEST", "before assigning to json " + sb.toString());
+
+                   // subjlist = new JSONObject(sb.toString());
+
+
+
+                    Log.i("phpTEST", sb.toString());
+                    String string = sb.toString();// + "\n\n" + attendance.toString() + "\n\n";
+                    return (string);
+
+                } catch (Exception e) {
+                    return (new String("EXCEPTION:" + e.getMessage()));
+                }
+            }
+        }
+
+        phpClass p = new phpClass(link);
+        p.execute();
+
+        /**
+         String data = URLEncoder.encode("dept", "UTF-8") + "=" +
+         URLEncoder.encode(dept, "UTF-8");
+         data += "&" + URLEncoder.encode("sem", "UTF-8") + "=" +
+         URLEncoder.encode(sem, "UTF-8");
+         data += "&" + URLEncoder.encode("class", "UTF-8") + "=" +
+         URLEncoder.encode(division, "UTF-8");
+         data += "&" + URLEncoder.encode("batch", "UTF-8") + "=" +
+         URLEncoder.encode(batch, "UTF-8");
+         data += "&" + URLEncoder.encode("uid", "UTF-8") + "=" +
+         URLEncoder.encode(uid, "UTF-8");
+         data += "&" + URLEncoder.encode("subject", "UTF-8") + "=" +
+         URLEncoder.encode(subject, "UTF-8");
+
+         data += "&" + URLEncoder.encode("jsonarray", "UTF-8") + "=" +
+         URLEncoder.encode(mainJsonArray.toString(), "UTF-8");
+         */
 
 
 
@@ -1014,8 +1160,6 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
             case R.id.uploadAttButton:
                 uploadAttendance();
                 break;
-
-
 
         }
     }

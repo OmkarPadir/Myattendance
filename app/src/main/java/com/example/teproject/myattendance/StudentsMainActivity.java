@@ -315,7 +315,7 @@ public class StudentsMainActivity extends AppCompatActivity
                 makeMarkAttVisible();
 
                 markAttFragment markAttFragment=(markAttFragment)getSupportFragmentManager().findFragmentById(R.id.markAttfrag);
-                markAttFragment.markAttendance();
+                markAttFragment.markAttendance(rollno);
 
                // markAttendance();
 
@@ -333,7 +333,16 @@ public class StudentsMainActivity extends AppCompatActivity
                 makeTeachTTVisible();
 
 
-            } else if (id == R.id.nav_teachers_profile) {
+            }
+            else if (id == R.id.nav_teachers_send_notices) {
+                internetErrorHandler();
+                makeSendNoticesVisible();
+
+               // viewTeachNoticesFrag sendNoticesFrag= (viewTeachNoticesFrag) getSupportFragmentManager().findFragmentById(R.id.sendNotifFrag);
+
+
+
+            }else if (id == R.id.nav_teachers_profile) {
                 maketeachProfileVisible();
                 internetErrorHandler();
                 viewTeachProfileFrag frag= (viewTeachProfileFrag) getSupportFragmentManager().findFragmentById(R.id.teachProfFrag);
@@ -474,11 +483,29 @@ public class StudentsMainActivity extends AppCompatActivity
 
     //////////////////// functions for navigation items ////////////////////////////////////////////
 
+
+    public void makeSendNoticesVisible()
+    {
+
+        makeTeachTTInvisible();
+        maketeachNoticesInvisible();
+        maketeachProfileInvisible();
+        makeMarkAttInvisible();
+        RelativeLayout sendNot =(RelativeLayout)findViewById(R.id.SendNotifLayout);
+        sendNot.setVisibility(View.VISIBLE);
+    }
+    public void makeSendNoticesInvisible()
+    {
+        RelativeLayout sendNot =(RelativeLayout)findViewById(R.id.SendNotifLayout);
+        sendNot.setVisibility(View.INVISIBLE);
+    }
+
     public void makeMarkAttVisible()
     {
         makeTeachTTInvisible();
         maketeachNoticesInvisible();
         maketeachProfileInvisible();
+        makeSendNoticesInvisible();
 
         RelativeLayout markAttFragLayout =(RelativeLayout)findViewById(R.id.markattFragLayout);
         markAttFragLayout.setVisibility(View.VISIBLE);
@@ -493,6 +520,7 @@ public class StudentsMainActivity extends AppCompatActivity
         makeMarkAttInvisible();
         maketeachNoticesInvisible();
         maketeachProfileInvisible();
+        makeSendNoticesInvisible();
 
         RelativeLayout rl =(RelativeLayout)findViewById(R.id.TeachersTimeTableLayout);
         rl.setVisibility(View.VISIBLE);
@@ -507,6 +535,7 @@ public class StudentsMainActivity extends AppCompatActivity
         makeMarkAttInvisible();
         makeTeachTTInvisible();
         maketeachProfileInvisible();
+        makeSendNoticesInvisible();
 
         RelativeLayout rl =(RelativeLayout)findViewById(R.id.teachNoticesLayout);
         rl.setVisibility(View.VISIBLE);
@@ -521,6 +550,7 @@ public class StudentsMainActivity extends AppCompatActivity
         makeMarkAttInvisible();
         makeTeachTTInvisible();
         maketeachNoticesInvisible();
+        makeSendNoticesInvisible();
 
         RelativeLayout rl =(RelativeLayout)findViewById(R.id.TeachersProfileLayout);
         rl.setVisibility(View.VISIBLE);
