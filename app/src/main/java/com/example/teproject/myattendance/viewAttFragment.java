@@ -53,6 +53,10 @@ public class viewAttFragment extends Fragment {
 
     View view;
 
+      String rollno;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
          view = inflater.inflate(R.layout.view_att_frag,container,false);
@@ -82,14 +86,16 @@ public class viewAttFragment extends Fragment {
 
       /*  LinearLayout AttendanceCol1 =(LinearLayout)view.findViewById(R.id.AttendanceCol1);
         LinearLayout AttendanceCol2 =(LinearLayout)view.findViewById(R.id.AttendanceCol2);*/
+        if (getArguments() != null) {
+            rollno = getArguments().getString("roll");
+        }
 
-
-
+        viewAttendance();
         return  view;
     }
 
 
-    public void viewAttendance(final String rollno)
+    public void viewAttendance()
     {
         String link = "http://000attendance-system.000webhostapp.com/student_login/attendance.php";
         final LinearLayout AttendanceCol1 =(LinearLayout)view.findViewById(R.id.AttendanceCol1);

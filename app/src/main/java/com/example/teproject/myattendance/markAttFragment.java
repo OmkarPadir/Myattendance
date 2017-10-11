@@ -52,6 +52,9 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
          view = inflater.inflate(R.layout.mark_att_frag,container,false);
 
 
+        if (getArguments() != null) {
+            uid = getArguments().getString("roll");
+        }
 
         Button loadsubs =(Button)view.findViewById(R.id.loadSubjButton);
         loadsubs.setOnClickListener(this);
@@ -104,7 +107,7 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
         Button uploadAtt = (Button)view.findViewById(R.id.uploadAttButton);
         uploadAtt.setOnClickListener(this);
 
-
+        markAttendance();
         return view;
     }
 
@@ -320,9 +323,9 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    public void markAttendance(String rollno) {
+    public void markAttendance() {
 
-        uid=rollno;
+
         makeLoadStudentsLayoutVisible();
 
         Button nextButton =(Button)view.findViewById(R.id.nextMarkAttButton);

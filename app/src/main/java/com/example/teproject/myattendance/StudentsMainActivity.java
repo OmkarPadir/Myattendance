@@ -8,8 +8,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,13 +21,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,6 +38,7 @@ public class StudentsMainActivity extends AppCompatActivity
 
     int tsflag;
     String rollno;
+    Bundle bundle;
 /** GIT Trial After Edit**/
 
 /** after creating trial branch*/
@@ -185,6 +182,9 @@ public class StudentsMainActivity extends AppCompatActivity
             }
 
         }
+
+        bundle = new Bundle();
+        bundle.putString("roll", rollno);
     }
     public boolean isConnectedToInternet(){
         ConnectivityManager connectivity = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -274,6 +274,10 @@ public class StudentsMainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
+        displaySelectedScreen(id);
+
+        /*
+
         if (tsflag == 0) {
             if (id == R.id.nav_view_attendance) {
 
@@ -312,7 +316,7 @@ public class StudentsMainActivity extends AppCompatActivity
 
                 internetErrorHandler();
 
-                makeMarkAttVisible();
+              //  makeMarkAttVisible();
 
                 markAttFragment markAttFragment=(markAttFragment)getSupportFragmentManager().findFragmentById(R.id.markAttfrag);
                 markAttFragment.markAttendance(rollno);
@@ -326,6 +330,7 @@ public class StudentsMainActivity extends AppCompatActivity
                 maketeachNoticesVisible();
                 viewTeachNoticesFrag noticesFragment= (viewTeachNoticesFrag) getSupportFragmentManager().findFragmentById(R.id.teachNoticesfragment);
                 noticesFragment.showNotices(rollno);
+
 
 
             } else if (id == R.id.nav_teachers_timetable) {
@@ -364,14 +369,81 @@ public class StudentsMainActivity extends AppCompatActivity
             drawer = (DrawerLayout) findViewById(R.id.teachers_drawer_layout);
         }
         drawer.closeDrawer(GravityCompat.START);
+
+        */
         return true;
     }
 
 
+    private void displaySelectedScreen(int itemId) {
 
+        //creating fragment object
+        Fragment fragment = null;
+
+        //initializing the fragment object which is selected
+        switch (itemId) {
+            case R.id.nav_view_attendance:
+                fragment = new viewAttFragment();
+                fragment.setArguments(bundle);
+                break;
+            case R.id.nav_notices:
+                fragment = new viewNoticesFragment();
+                fragment.setArguments(bundle);
+                break;
+            case R.id.nav_timetable:
+                fragment = new viewTTFragment();
+                fragment.setArguments(bundle);
+                break;
+            case R.id.nav_profile:
+                fragment = new viewProfileFragment();
+                fragment.setArguments(bundle);
+                break;
+
+            case R.id.nav_mark_attendance:
+                fragment = new markAttFragment();
+                fragment.setArguments(bundle);
+                break;
+            case R.id.nav_teachers_notices:
+                fragment = new viewTeachNoticesFrag();
+                fragment.setArguments(bundle);
+                break;
+            case R.id.nav_teachers_send_notices:
+                fragment = new SendNotification();
+                fragment.setArguments(bundle);
+                break;
+            case R.id.nav_teachers_profile:
+                fragment = new viewTeachProfileFrag();
+                fragment.setArguments(bundle);
+                break;
+
+
+            case R.id.nav_logout:
+                dbHandler dbh = new dbHandler(this, null, null, 1);
+                dbh.deletedata();
+                Intent i = new Intent(this, LoginActivity.class);
+                startActivity(i);
+                break;
+        }
+
+        //replacing the fragment
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.contents_frame, fragment);
+            ft.commit();
+        }
+
+        DrawerLayout drawer;
+        if (tsflag == 0) {
+            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        } else {
+            drawer = (DrawerLayout) findViewById(R.id.teachers_drawer_layout);
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        //return true;
+    }
 
     /////////////////////////  Layouts Visible Invisible for Students side /////////////////////////
-    private void loadNotices() {
+  /*  private void loadNotices() {
         makeNoticesVisible();
     }
 

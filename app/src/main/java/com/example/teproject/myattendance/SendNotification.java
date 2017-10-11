@@ -1,6 +1,6 @@
 package com.example.teproject.myattendance;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -74,8 +74,9 @@ public class SendNotification extends Fragment implements View.OnClickListener {
 
         ArrayList<String> batchList = new ArrayList<>(5);
         batchList.add(0,"-");
-        batchList.add(1,"A");
-        batchList.add(2, "B");
+        batchList.add(1,"1");
+        batchList.add(2, "2");
+        batchList.add(3, "3");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_dropdown_item,yearList);
         spinner_year.setAdapter(adapter);

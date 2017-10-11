@@ -75,7 +75,7 @@ public class viewTTFragment extends Fragment {
 
 
     View view;
-
+    String rollno;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -123,10 +123,14 @@ public class viewTTFragment extends Fragment {
          timetabletv67 =(TextView)view.findViewById(R.id.timetabletv67);
          timetabletv68 =(TextView)view.findViewById(R.id.timetabletv68);
 
+        if (getArguments() != null) {
+            rollno = getArguments().getString("roll");
+        }
+        showTimeTable();
         return view;
     }
 
-    public void showTimeTable(final String rollno)
+    public void showTimeTable()
     {
         String link = "http://000attendance-system.000webhostapp.com/student_login/timetable.php";
         final HorizontalScrollView hsv = (HorizontalScrollView)view.findViewById(R.id.hsv);

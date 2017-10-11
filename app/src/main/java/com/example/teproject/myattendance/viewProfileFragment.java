@@ -71,12 +71,16 @@ public class viewProfileFragment extends Fragment implements View.OnClickListene
         SaveButton=(Button)view.findViewById(R.id.saveProfileButton);
         SaveButton.setOnClickListener(this);
 
+        if (getArguments() != null) {
+            rollno = getArguments().getString("roll");
+        }
+        showProfile();
         return view;
     }
 
-    public void showProfile(final String roll)
+    public void showProfile()
     {
-        rollno=roll;
+
         String link="http://000attendance-system.000webhostapp.com/student_login/profile.php";
         final RelativeLayout profLayout =(RelativeLayout)view.findViewById(R.id.profLayout);
         class phpClass extends AsyncTask<String, String, String> {

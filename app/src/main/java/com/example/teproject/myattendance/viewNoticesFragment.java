@@ -32,15 +32,20 @@ import java.net.URLEncoder;
 public class viewNoticesFragment extends Fragment {
     @Nullable
     View view;
+    String rollno;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.view_notices_frag,container,false);
 
-
+        if (getArguments() != null) {
+            rollno = getArguments().getString("roll");
+        }
+        showNotices();
         return  view;
     }
 
-    public void showNotices(final String rollno)
+    public void showNotices()
     {
 
         String link="http://000attendance-system.000webhostapp.com/student_login/notices.php";
