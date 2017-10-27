@@ -21,7 +21,7 @@ class dbHandler extends SQLiteOpenHelper{
     private static String COL1="_id";
     private static String COLts="tsflag";
     private static String COL2="email";
-  //  private static String COL3="password";
+
 
     public dbHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -32,7 +32,7 @@ class dbHandler extends SQLiteOpenHelper{
 
         try {
             String query = "create table "+TABLE_NAME+ "( " + COL1 + " integer primary key autoincrement , " + COL2 + " text , "
-                    + COLts + " text  );";//unique("+COL2+") on conflict replace);";
+                    + COLts + " text  );";
             db.execSQL(query);
 
         }catch(Exception e)
@@ -76,7 +76,7 @@ class dbHandler extends SQLiteOpenHelper{
                 if(c.getString(c.getColumnIndex(COL2))!=null)
                 {
                     dbResult += c.getString(c.getColumnIndex(COL2))+":"+c.getString(c.getColumnIndex(COLts));
-                    //dbResult +="\n";
+
                     c.moveToNext();
                 }
             }

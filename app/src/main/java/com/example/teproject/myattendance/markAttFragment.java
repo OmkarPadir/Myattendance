@@ -334,10 +334,7 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
 
     }
 
-    public void onNextClicked(View view)
-    {
 
-    }
 
     private void getStudentsList() {
 

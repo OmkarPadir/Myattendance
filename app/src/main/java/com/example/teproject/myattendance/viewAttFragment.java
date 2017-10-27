@@ -3,6 +3,7 @@ package com.example.teproject.myattendance;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TableRow;
 import android.widget.TextView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,27 +32,6 @@ import java.net.URLEncoder;
 public class viewAttFragment extends Fragment {
     @Nullable
 
-    private static TextView tv1;
-    private static TextView tv2;
-    private static TextView tv3;
-    private static TextView tv4;
-    private static TextView tv5;
-    private static TextView tv6;
-    private static TextView tv7;
-    private static TextView tv8;
-    private static TextView tv9;
-
-    private static TextView tv11;
-    private static TextView tv12;
-    private static TextView tv13;
-    private static TextView tv14;
-    private static TextView tv15;
-    private static TextView tv16;
-    private static TextView tv17;
-    private static TextView tv18;
-    private static TextView tv19;
-
-
 
     View view;
 
@@ -63,29 +45,8 @@ public class viewAttFragment extends Fragment {
 
 
 
-          tv1 =(TextView)view.findViewById(R.id.textView1);
-          tv2 =(TextView)view.findViewById(R.id.textView2);
-          tv3 =(TextView)view.findViewById(R.id.textView3);
-          tv4 =(TextView)view.findViewById(R.id.textView4);
-          tv5 =(TextView)view.findViewById(R.id.textView5);
-          tv6 =(TextView)view.findViewById(R.id.textView6);
-          tv7 =(TextView)view.findViewById(R.id.textView7);
-          tv8 =(TextView)view.findViewById(R.id.textView8);
-          tv9 =(TextView)view.findViewById(R.id.textView9);
 
 
-          tv11 =(TextView)view.findViewById(R.id.textView11);
-          tv12 =(TextView)view.findViewById(R.id.textView12);
-          tv13 =(TextView)view.findViewById(R.id.textView13);
-          tv14 =(TextView)view.findViewById(R.id.textView14);
-          tv15 =(TextView)view.findViewById(R.id.textView15);
-          tv16 =(TextView)view.findViewById(R.id.textView16);
-          tv17 =(TextView)view.findViewById(R.id.textView17);
-          tv18 =(TextView)view.findViewById(R.id.textView18);
-          tv19 =(TextView)view.findViewById(R.id.textView19);
-
-      /*  LinearLayout AttendanceCol1 =(LinearLayout)view.findViewById(R.id.AttendanceCol1);
-        LinearLayout AttendanceCol2 =(LinearLayout)view.findViewById(R.id.AttendanceCol2);*/
         if (getArguments() != null) {
             rollno = getArguments().getString("roll");
         }
@@ -98,13 +59,15 @@ public class viewAttFragment extends Fragment {
     public void viewAttendance()
     {
         String link = "http://000attendance-system.000webhostapp.com/student_login/attendance.php";
-        final LinearLayout AttendanceCol1 =(LinearLayout)view.findViewById(R.id.AttendanceCol1);
-        final LinearLayout AttendanceCol2 =(LinearLayout)view.findViewById(R.id.AttendanceCol2);
+
+
+        final LinearLayout viewAttFrame = (LinearLayout)view.findViewById(R.id.viewAtt);
         class phpClass extends AsyncTask<String, String, String> {
             private final String link;
             JSONObject subjlist;
             JSONObject attendance;
             JSONObject obj;
+            JSONArray subjcount;
 
 
 
@@ -113,69 +76,7 @@ public class viewAttFragment extends Fragment {
                 link = url;
             }
 
-            protected void onPostExecute(String res) {
 
-                disableProgressBar();
-
-                AttendanceCol1.setVisibility(View.VISIBLE);
-                AttendanceCol2.setVisibility(View.VISIBLE);
-
-
-                try {
-                    tv1.setText(subjlist.getString("sub1"));
-                    tv11.setText(attendance.getString(subjlist.getString("sub1")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv2.setText(subjlist.getString("sub2"));
-                    tv12.setText(attendance.getString(subjlist.getString("sub2")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv3.setText(subjlist.getString("sub3"));
-                    tv13.setText(attendance.getString(subjlist.getString("sub3")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv4.setText(subjlist.getString("sub4"));
-                    tv14.setText(attendance.getString(subjlist.getString("sub4")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv5.setText(subjlist.getString("sub5"));
-                    tv15.setText(attendance.getString(subjlist.getString("sub5")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv6.setText(subjlist.getString("sub6"));
-                    tv16.setText(attendance.getString(subjlist.getString("sub6")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv7.setText(subjlist.getString("sub7"));
-                    tv17.setText(attendance.getString(subjlist.getString("sub7")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv8.setText(subjlist.getString("sub8"));
-                    tv18.setText(attendance.getString(subjlist.getString("sub8")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    tv9.setText(subjlist.getString("sub9"));
-                    tv19.setText(attendance.getString(subjlist.getString("sub9")));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
 
             protected String doInBackground(String[] params) {
                 try {
@@ -212,9 +113,10 @@ public class viewAttFragment extends Fragment {
                     obj = new JSONObject(sb.toString());
                     subjlist = obj.getJSONObject("subjlist");
                     attendance = obj.getJSONObject("attendance");
+                    subjcount = obj.getJSONArray("subjcount");
 
 
-                    Log.i("phpTEST", subjlist.toString());
+                    Log.i("phpTEST", subjcount.toString());
                     String string = subjlist.toString() + "\n\n" + attendance.toString() + "\n\n";
                     return (string);
 
@@ -222,11 +124,156 @@ public class viewAttFragment extends Fragment {
                     return (new String("EXCEPTION:" + e.getMessage()));
                 }
             }
+
+            protected void onPostExecute(String res) {
+
+                disableProgressBar();
+
+
+                if(viewAttFrame.getChildCount()>0)
+                {
+                    viewAttFrame.removeAllViews();
+
+                }
+
+                ConstraintLayout.LayoutParams lp = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.MATCH_PARENT,
+                        ConstraintLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(10,10,10,10);
+
+
+                LinearLayout.LayoutParams linlay = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                linlay.setMargins(200,10,10,10);
+
+
+
+                TextView tvSub[] = new TextView[subjlist.length()-3];
+                TextView tvAtt[] = new TextView[subjlist.length()-3];
+                TableRow tbr[]=new TableRow[subjlist.length()-3];
+                for(int i=0;i<subjlist.length()-3;i++)
+                {
+                    TextView rowTvSub = new TextView(view.getContext());
+                    TextView rowAtt = new TextView(view.getContext());
+                    TableRow row = new TableRow(view.getContext());
+
+                    TableRow.LayoutParams trlp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+                    row.setLayoutParams(trlp);
+
+                    rowAtt.setTextSize(24);
+                    rowTvSub.setTextSize(24);
+
+                    rowTvSub.setPadding(10,10,10,10);
+                    rowAtt.setPadding(10,10,10,10);
+
+                    View parent = (View)view.getParent();
+                    int width = parent.getWidth();
+
+
+                    TableRow.LayoutParams layparaminTR = new TableRow.LayoutParams(width/2-50, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    layparaminTR.setMargins(10,10,10,10);
+                    rowAtt.setLayoutParams(layparaminTR);
+                    rowTvSub.setLayoutParams(layparaminTR);
+
+
+                    rowTvSub.setBackgroundResource(R.drawable.border_for_tv);
+                    rowAtt.setBackgroundResource(R.drawable.border_for_tv);
+
+
+                    row.addView(rowTvSub);
+                    row.addView(rowAtt);
+                    viewAttFrame.addView(row);
+
+
+                    tbr[i]=row;
+                    tvSub[i]= rowTvSub;
+                    tvAtt[i]= rowAtt;
+
+                }
+
+                Log.i("temp", "subj len = "+String.valueOf(subjlist.length()));
+
+                int total=0, totpresent=0;
+                try
+                {
+                for(int i=0;i<subjlist.length()-4;i++)
+                {
+                    total+=Integer.valueOf(subjcount.getJSONObject(i).getString("lecture_count"));
+                    if(i==0)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub1"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub1"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub1")));
+                    }
+                    if(i==1)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub2"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub2"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub2")));
+                    }
+                    if(i==2)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub3"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub3"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub3")));
+                    }
+                    if(i==3)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub4"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub4"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub4")));
+                    }
+                    if(i==4)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub5"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub5"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub5")));
+                    }
+                    if(i==5)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub6"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub6"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub6")));
+                    }
+                    if(i==6)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub7"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub7"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub7")));
+                    }
+                    if(i==7)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub8"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub8"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub8")));
+                    }
+                    if(i==8)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub9"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub9"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub9")));
+                    }
+                    if(i==9)
+                    {
+                        tvSub[i].setText(subjlist.getString("sub10"));
+                        tvAtt[i].setText(attendance.getString(subjlist.getString("sub10"))+"/"+subjcount.getJSONObject(i).getString("lecture_count"));
+                        totpresent+=Integer.parseInt(attendance.getString(subjlist.getString("sub10")));
+                    }
+
+                }
+                    tvSub[subjlist.length()-4].setText("Total");
+                    tvAtt[subjlist.length()-4].setText(String.valueOf(totpresent)+"/"+String.valueOf(total)+"    "
+                            +String.valueOf((float) (totpresent*100)/total)+"%");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
         }
 
         showProgressBar();
-        AttendanceCol1.setVisibility(View.INVISIBLE);
-        AttendanceCol2.setVisibility(View.INVISIBLE);
+
         phpClass p = new phpClass(link);
         p.execute();
 

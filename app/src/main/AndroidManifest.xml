@@ -30,7 +30,6 @@
             android:name=".StudentsMainActivity"
             android:label="@string/title_activity_students_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".scrollTest"></activity>
     </application>
 
 </manifest>

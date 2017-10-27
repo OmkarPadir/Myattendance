@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 /*
     teacher student flag 0-Student 1-teacher
 
- */
+*/
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
@@ -124,41 +124,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         Log.i("sqlTest","before isempty!");
         if(!ep.isEmpty()) {
             String mEmail, mtsflag;
-           // int i = 0;
+
             String[] parts = ep.split(":");
             mEmail = parts[0]; // 004
             mtsflag = parts[1];
 
-           /* //  textView2.setText(email+password+"*");
-            */Log.i("sqlTest", "before checking");
-           /* try {
-                if (email.equals("test@te.com") && password.equals("123456")) {
-                    // textView2.setText("Success!!");
-                    Log.i(TAG2, "succcess");
-                }
-            } catch (Exception e) {
-                Log.i(TAG2, e.getMessage());
-            }
-          //  showProgress(true);
-            mAuthTask = new UserLoginTask(email, password ,0);
-            mAuthTask.execute((Void) null);
-
-           /*  NOT WORKING
-
-           mEmailView.setText(email);
-            mPasswordView.setText(password);
-            attemptLogin(0);
-*/
-         /*  if(email.equals("test@te.com") && password.equals("123456")) {     //working
-                Intent j;
-                j = new Intent(getApplicationContext(),StudentsMainActivity.class);
-                j.putExtra("logindata",email);
-                startActivity(j);
-                finish();
-            }
-        }*/
-            Log.i(TAG2, mtsflag);
-           // if(mtsflag.equals("0"))
             {
                 Intent i;
                 i = new Intent(getApplicationContext(),StudentsMainActivity.class);
@@ -168,16 +138,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 startActivity(i);
                 finish();
             }
-           /* else
-            {
-                //  Context context = getApplicationContext();
-                CharSequence text = "Teachers login will be added later";
-                int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(getApplicationContext(),text, duration);
-                toast.show();
-            }
-            */
         }
 
     }
@@ -476,18 +437,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
 
-
-            /*if(mEmail.equals("test@te.com") && mPassword.equals("123456")) {
-
-                if(cbFlag) {
-                        dbh.addRows(mEmail, mPassword);
-                    }
-                    return true;
-
-            }
-            /*else
-                return false;*/
-
             return false;
             // TODO: register the new account here.
          //   return true;
@@ -504,7 +453,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                  /*OMKARS CODE , 21/08/2017*/
 
-               // if(mtsflag==0)
+
                 {
                 Intent i;
                 i = new Intent(getApplicationContext(),StudentsMainActivity.class);
@@ -514,16 +463,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 startActivity(i);
                 finish();
                 }
-              /*//  else
-                {
-                  //  Context context = getApplicationContext();
-                    CharSequence text = "Teachers login will be added later";
-                    int duration = Toast.LENGTH_SHORT;
 
-                    Toast toast = Toast.makeText(getApplicationContext(),text, duration);
-                    toast.show();
-                }
-                /**/
 
             } else if(invalidFlag==1)
             {
