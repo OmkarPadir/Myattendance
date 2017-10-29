@@ -23,16 +23,18 @@
             android:id="@+id/nav_teachers_send_notices"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Send Notices" />
+
+        <item
+            android:id="@+id/nav_teachers_profile"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Proile" />
+        <item
+            android:id="@+id/nav_logout"
+
+            android:icon="@android:drawable/ic_lock_power_off"
+            android:title="Logout" />
     </group>
 
-    <item
-    android:id="@+id/nav_teachers_profile"
-    android:icon="@drawable/ic_menu_manage"
-    android:title="Proile" />
-    <item
-        android:id="@+id/nav_logout"
 
-        android:icon="@android:drawable/ic_lock_power_off"
-        android:title="Logout" />
 
 </menu>

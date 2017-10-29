@@ -312,11 +312,13 @@ public class StudentsMainActivity extends AppCompatActivity
                 fragment = new SendNotification();
                 fragment.setArguments(bundle);
                 break;
+            case R.id.nav_teachers_timetable:
+                fragment = new ViewTTforTeachers();
+                break;
             case R.id.nav_teachers_profile:
                 fragment = new viewTeachProfileFrag();
                 fragment.setArguments(bundle);
                 break;
-
 
             case R.id.nav_logout:
                 dbHandler dbh = new dbHandler(this, null, null, 1);
