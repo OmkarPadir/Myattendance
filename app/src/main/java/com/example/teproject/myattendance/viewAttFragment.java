@@ -62,6 +62,7 @@ public class viewAttFragment extends Fragment {
 
 
         final LinearLayout viewAttFrame = (LinearLayout)view.findViewById(R.id.viewAtt);
+
         class phpClass extends AsyncTask<String, String, String> {
             private final String link;
             JSONObject subjlist;
@@ -261,9 +262,9 @@ public class viewAttFragment extends Fragment {
                     }
 
                 }
-                    tvSub[subjlist.length()-4].setText("Total");
+                    tvSub[subjlist.length()-4].setText("Total \n");
                     tvAtt[subjlist.length()-4].setText(String.valueOf(totpresent)+"/"+String.valueOf(total)+"    "
-                            +String.valueOf((float) (totpresent*100)/total)+"%");
+                            +String.format("%.2f",(float) (totpresent*100)/total)+"%");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -298,6 +299,7 @@ public class viewAttFragment extends Fragment {
         tv.setVisibility(View.INVISIBLE);
 
     }
+
 
 
 }

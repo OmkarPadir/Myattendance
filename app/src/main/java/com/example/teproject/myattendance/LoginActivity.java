@@ -481,5 +481,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+    public void openSignupActivity(View v)
+    {
+        Intent i = new Intent(this.getApplicationContext(),SignUpActivity.class);
+        getApplicationContext().startActivity(i);
+    }
+
 }
 

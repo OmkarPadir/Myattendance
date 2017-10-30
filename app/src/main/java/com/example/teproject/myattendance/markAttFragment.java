@@ -44,7 +44,10 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
     String division;
     String batch;
 
-    int Count;
+    int Count,deptCount;
+    ArrayList<String> deptList;
+
+    Spinner deptspinner;
 
 
     @Override
@@ -61,6 +64,9 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
 
         Button nextButton =(Button)view.findViewById(R.id.nextMarkAttButton);
         nextButton.setOnClickListener(this);
+
+         deptspinner =(Spinner) view.findViewById(R.id.deptspinner);
+        getDeptList();
 
         TableRow attrow1 =(TableRow)view.findViewById(R.id.attrow1);
         TableRow attrow2 =(TableRow)view.findViewById(R.id.attrow2);
@@ -338,7 +344,7 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
 
     private void getStudentsList() {
 
-        Spinner deptspinner =(Spinner) view.findViewById(R.id.deptspinner);
+
         Spinner semspinner =(Spinner) view.findViewById(R.id.semspinner);
         Spinner divspinner =(Spinner) view.findViewById(R.id.divisionspinner);
         Spinner subjectspinner =(Spinner) view.findViewById(R.id.subjectspinner);
@@ -1161,6 +1167,76 @@ public class markAttFragment extends Fragment implements View.OnClickListener{
                 uploadAttendance();
                 break;
 
+        }
+    }
+    public void getDeptList()
+    {
+        String link = "https://000attendance-system.000webhostapp.com/AdministratorApp/Department/returndeptlist.php";
+
+        phpDeptList p = new phpDeptList(link);
+        p.execute();
+    }
+
+    public class phpDeptList extends AsyncTask<String,String,String>
+    {
+        String link;
+
+        phpDeptList(String l)
+        {
+            link = l;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            Toast.makeText(view.getContext(), "Getting Departments...", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_dropdown_item, deptList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            deptspinner.setAdapter(adapter);
+
+            Toast.makeText(view.getContext(), "Departments Loaded...", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try
+            {
+                URL url = new URL(link);
+                URLConnection conn = url.openConnection();
+                conn.setDoOutput(true);
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                String line="";
+                StringBuffer sb = new StringBuffer("");
+
+                while((line=br.readLine())!=null)
+                {
+                    sb.append(line);
+                    break;
+                }
+
+                JSONArray jsonArray = new JSONArray(sb.toString());
+                deptCount = jsonArray.length();
+                deptList = new ArrayList<>(deptCount);
+
+
+                for(int i=0 ; i<jsonArray.length() ; i++)
+                {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    String str = jsonObject.getString("DEPT_NAME");
+                    deptList.add(i,str);
+                }
+
+                return "";
+            }
+            catch (Exception e)
+            {
+                return e.toString();
+            }
         }
     }
 

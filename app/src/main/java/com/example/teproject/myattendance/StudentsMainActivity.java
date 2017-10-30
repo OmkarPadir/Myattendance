@@ -46,6 +46,7 @@ public class StudentsMainActivity extends AppCompatActivity
 
         Bundle logindata = getIntent().getExtras();
         tsflag = logindata.getInt("tsflagdata");
+        rollno = logindata.getString("logindata");
         Log.i("temp", String.valueOf(tsflag));
 
         Toolbar toolbar;
@@ -79,6 +80,23 @@ public class StudentsMainActivity extends AppCompatActivity
         }
         navigationView.setNavigationItemSelectedListener(this);
 
+        bundle = new Bundle();
+        bundle.putString("roll", rollno);
+        bundle.putString("tsflag",Integer.toString(tsflag));
+
+        android.support.v4.app.Fragment f = null;
+        Bundle defbun = new Bundle();
+        defbun.putString("rollno",rollno);
+      //  defbun.putString("tsflag",Integer.toString(tsflag));
+        if(tsflag==0) {
+            f = new Default_page_frag();
+
+            f.setArguments(defbun);
+
+            FragmentTransaction fft = getSupportFragmentManager().beginTransaction();
+            fft.replace(R.id.contents_frame,f);
+            fft.commit();
+        }
 
 
 
@@ -86,8 +104,8 @@ public class StudentsMainActivity extends AppCompatActivity
         TextView emailtv = (TextView) headerView.findViewById(R.id.emailtv);
         final TextView nametv = (TextView) headerView.findViewById(R.id.nametv);
 
-        rollno = logindata.getString("logindata");
 
+        final String[] name = {null};
 
         {
 
@@ -111,6 +129,9 @@ public class StudentsMainActivity extends AppCompatActivity
 
                     try {
                         nametv.setText(profilejson.getString("name"));
+
+
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -178,8 +199,8 @@ public class StudentsMainActivity extends AppCompatActivity
 
         }
 
-        bundle = new Bundle();
-        bundle.putString("roll", rollno);
+
+
     }
     public boolean isConnectedToInternet(){
         ConnectivityManager connectivity = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -252,13 +273,9 @@ public class StudentsMainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        displaySelectedScreen(id);
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+      return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -320,12 +337,20 @@ public class StudentsMainActivity extends AppCompatActivity
                 fragment.setArguments(bundle);
                 break;
 
+            case R.id.action_LogOut:
             case R.id.nav_logout:
                 dbHandler dbh = new dbHandler(this, null, null, 1);
                 dbh.deletedata();
                 Intent i = new Intent(this, LoginActivity.class);
                 startActivity(i);
                 break;
+
+            case R.id.action_changePassword:
+                fragment = new ChangePassword();
+                fragment.setArguments(bundle);
+                break;
+
+
         }
 
         //replacing the fragment
