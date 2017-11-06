@@ -619,7 +619,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView21"
-            android:entries="@array/demo_array"
             android:gravity="center_horizontal"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="0dp" />

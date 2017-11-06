@@ -26,11 +26,16 @@
             </intent-filter>
         </activity>
         <activity
-
             android:name=".StudentsMainActivity"
             android:label="@string/title_activity_students_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".scrollTest"></activity>
+        <activity android:name=".SignUpActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".TeacherSignupActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".StudentSignupActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ApplicationStatusActivity"></activity>
     </application>
 
 </manifest>

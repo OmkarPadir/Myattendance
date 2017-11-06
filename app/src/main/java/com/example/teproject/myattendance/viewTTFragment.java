@@ -75,7 +75,12 @@ public class viewTTFragment extends Fragment {
 
 
     View view;
+    String rollno;
 
+    String dept;
+    String div;
+    String sem;
+    String batch;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -123,12 +128,31 @@ public class viewTTFragment extends Fragment {
          timetabletv67 =(TextView)view.findViewById(R.id.timetabletv67);
          timetabletv68 =(TextView)view.findViewById(R.id.timetabletv68);
 
+        if (getArguments() != null) {
+            rollno = getArguments().getString("roll");
+
+            if(rollno.equals("0"))
+            {
+                dept = getArguments().getString("dept");
+                div = getArguments().getString("div");
+                sem = getArguments().getString("sem");
+                batch= getArguments().getString("batch");
+            }
+        }
+        Log.i("temp","here i am "+rollno);
+        showTimeTable();
         return view;
     }
 
-    public void showTimeTable(final String rollno)
+    public void showTimeTable()
     {
-        String link = "http://000attendance-system.000webhostapp.com/student_login/timetable.php";
+        String link;
+        if(rollno.equals("0"))
+        {
+            link = "http://000attendance-system.000webhostapp.com/teacher_login/TimeTable/viewTT.php";
+        }
+        else
+            link = "http://000attendance-system.000webhostapp.com/student_login/timetable.php";
         final HorizontalScrollView hsv = (HorizontalScrollView)view.findViewById(R.id.hsv);
 
         class phpClass extends AsyncTask<String, String, String> {
@@ -273,8 +297,24 @@ public class viewTTFragment extends Fragment {
             protected String doInBackground(String[] params) {
                 try {
 
-                    String data = URLEncoder.encode("rollno", "UTF-8") + "=" +
-                            URLEncoder.encode(rollno, "UTF-8");
+                    String data;
+                    if(rollno.equals("0"))
+                    {
+                         data = URLEncoder.encode("dept", "UTF-8") + "=" +
+                                URLEncoder.encode(dept, "UTF-8");
+                        data += "&" + URLEncoder.encode("cur_sem", "UTF-8") + "=" +
+                                URLEncoder.encode(sem, "UTF-8");
+                        data += "&" + URLEncoder.encode("class", "UTF-8") + "=" +
+                                URLEncoder.encode(div, "UTF-8");
+                        data += "&" + URLEncoder.encode("batch", "UTF-8") + "=" +
+                                URLEncoder.encode(batch, "UTF-8");
+
+                    }
+                    else
+                    {
+                        data= URLEncoder.encode("rollno", "UTF-8") + "=" +
+                                URLEncoder.encode(rollno, "UTF-8");
+                    }
 
 
                     URL url = new URL(link);

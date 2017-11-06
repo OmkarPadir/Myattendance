@@ -34,15 +34,19 @@ public class viewTeachNoticesFrag extends Fragment{
 
     @Nullable
     View view;
+    String uid;
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.view_notices_frag,container,false);
 
-
+        if (getArguments() != null) {
+            uid = getArguments().getString("roll");
+        }
+        showNotices();
         return  view;
     }
 
-    public void showNotices(final String uid)
+    public void showNotices( )
     {
         Log.i("temp",uid);
 

@@ -39,6 +39,9 @@ public class viewTeachProfileFrag extends Fragment implements View.OnClickListen
     EditText profileMobet;
 
     String uid;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.teach_profile_frag,container,false);
@@ -56,14 +59,19 @@ public class viewTeachProfileFrag extends Fragment implements View.OnClickListen
         Button saveButton =(Button)view.findViewById(R.id.tpSaveButton);
         saveButton.setOnClickListener( this);
 
-
+       // readBundle(getArguments());
+        if (getArguments() != null) {
+            uid = getArguments().getString("roll");
+        }
+        showteachProfile();
 
         return view;
     }
 
-    public void showteachProfile(final String u)
+
+    public void showteachProfile()
     {
-        uid=u;
+
 
         String link="http://000attendance-system.000webhostapp.com/teacher_login/Profile/getProfile.php";
         final ConstraintLayout profLayout =(ConstraintLayout) view.findViewById(R.id.TeachProfileLayout);

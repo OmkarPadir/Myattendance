@@ -11,7 +11,7 @@
     tools:layout_editor_absoluteY="81dp"
     tools:showIn="@layout/app_bar_students_main">
 
-
+<!--
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -58,7 +58,7 @@
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
-        <!--
+
                 <LinearLayout
                     android:id="@+id/AttendanceCol1"
                     android:layout_width="175dp"
@@ -239,7 +239,7 @@
                         android:text="TextView"
                         android:textSize="18sp" />
                 </LinearLayout>
-        -->
+
         <fragment
             android:id="@+id/viewAttfragment"
             android:name="com.example.teproject.myattendance.viewAttFragment"
@@ -272,7 +272,7 @@
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <!--    <ScrollView
+           <ScrollView
                     android:layout_width="0dp"
                     android:layout_height="487dp"
                     android:layout_marginEnd="8dp"
@@ -531,7 +531,7 @@
                     </LinearLayout>
                 </ScrollView>
 
-                -->
+
         <fragment
             android:id="@+id/viewNoticesFragment"
             android:name="com.example.teproject.myattendance.viewNoticesFragment"
@@ -560,7 +560,7 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1">
 
-        <!--   <HorizontalScrollView
+          <HorizontalScrollView
                      android:layout_width="wrap_content"
                      android:layout_height="match_parent">
 
@@ -1623,7 +1623,7 @@
 
                      </TableLayout>
                  </HorizontalScrollView>
-                 -->
+
 
         <fragment
             android:id="@+id/viewTTfragment"
@@ -1661,7 +1661,7 @@
             tools:layout="@layout/view_profile_fragment" />
     </RelativeLayout>
 
-    <!--    <TextView
+       <TextView
                     android:id="@+id/nametv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1810,4 +1810,22 @@
             </RelativeLayout>
         -->
 
+    <FrameLayout
+        android:id="@+id/contents_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1">
+
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>
